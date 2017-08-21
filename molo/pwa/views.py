@@ -1,6 +1,5 @@
 import json
 from django.views.generic import View
-from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 
@@ -11,5 +10,5 @@ class RegistrationTokenView(View):
             profile = request.user.profile
             profile.registration_token = data['registration_id']
             profile.save()
-            return HttpResponse('token updated')
-        return HttpResponse('user not registered')
+            return HttpResponse('Token Updated')
+        return HttpResponse('User has no profile')

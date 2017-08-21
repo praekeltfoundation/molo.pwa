@@ -15,5 +15,5 @@ urlpatterns += patterns(
     '',
     url(
         r'^notification_devices/$', RegistrationTokenView.as_view(),
-        name='registration-token-view'),
+        name='registration-token'),
 )
