@@ -11,15 +11,16 @@ register = template.Library()
 
 @register.filter(is_safe=True)
 def js(obj):
-    """ Transform a python object so it can be safely used in javascript/JSON. """
     return mark_safe(json.dumps(obj, cls=DjangoJSONEncoder))
 
 
 @register.inclusion_tag('molo_pwa.html', takes_context=True)
 def molo_pwa_meta(context):
     # Pass all PWA_* settings into the template
+    pwa_settings = {setting_name: getattr(app_settings, setting_name)
+                    for setting_name in dir(app_settings)
+                    if setting_name.startswith('PWA_')}
     return {
-        setting_name: getattr(app_settings, setting_name)
-        for setting_name in dir(app_settings)
-        if setting_name.startswith('PWA_')
+        'request': context['request'],
+        'pwa_settings': pwa_settings
     }

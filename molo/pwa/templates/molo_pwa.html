@@ -1,11 +1,11 @@
-{% load wagtailcore_tags i18n  %}
+
 <link rel="manifest" href="/manifest.json">
-{% for icon in PWA_ICONS %}
+{% for icon in pwa_settings.PWA_ICONS %}
     <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.sizes }}">
 {% endfor %}
-<meta name="theme-color" content="{{ PWA_THEME_COLOR }}">
+<meta name="theme-color" content="{{ pwa_settings.PWA_THEME_COLOR }}">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="{{ PWA_NAME }}">
+<meta name="apple-mobile-web-app-title" content="{{ pwa_settings.PWA_NAME }}">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script type="text/javascript">
     if ('serviceWorker' in navigator) {
@@ -18,21 +18,21 @@
         });
     }
 </script>
-{# {% if user.is_authenticated %}#}
+{% if request.user.is_authenticated %}
   <!-- WIP FIREBASE INITIALIZATION CODE -->
   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-messaging.js"></script>
   <script>
     // Initialize Firebase
     var config = {
-      apiKey: "{{ PWA_FCM_API_KEY }}",
-      messagingSenderId: "{{ PWA_FCM_MSGSENDER_ID }}"
+      apiKey: "{{ pwa_settings.PWA_FCM_API_KEY }}",
+      messagingSenderId: "{{ pwa_settings.PWA_FCM_MSGSENDER_ID }}"
     };
     firebase.initializeApp(config);
   </script>
   <script type="text/javascript">
   const messaging = firebase.messaging();
-  navigator.serviceWorker.register('serviceworker.js')
+  navigator.serviceWorker.register('/serviceworker.js')
     .then((registration) => {
       console.log(registration);
       messaging.useServiceWorker(registration);
@@ -166,4 +166,4 @@
 
   </script>
   <!-- END FIREBASE INITIALIZATION CODE -->      
-{# {% endif %}#}
+{% endif %}

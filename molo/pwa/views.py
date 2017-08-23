@@ -2,17 +2,23 @@ import json
 from django.views.generic import View
 from django.http import HttpResponse
 from django.shortcuts import render
+from fcm_django.models import FCMDevice
 
 from . import app_settings
 
 
 class RegistrationTokenView(View):
     def post(self, request, *args, **kwargs):
+        print 'heyy'
         if hasattr(request.user, 'profile'):
             data = json.loads(request.body)
             profile = request.user.profile
             profile.registration_token = data['registration_id']
             profile.save()
+            device, created = FCMDevice.objects.get_or_create(
+                registration_id=data['registration_id'], defaults={
+                    'user': request.user,
+                    'name': request.user.username, 'type': 'web'})
             return HttpResponse('Token Updated')
         return HttpResponse('User has no profile')
 
