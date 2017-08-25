@@ -10,8 +10,8 @@ PWA_SERVICE_WORKER_PATH = getattr(settings, 'PWA_SERVICE_WORKER_PATH',
 
 # App parameters to include in manifest.json and appropriate meta tags
 PWA_NAME = getattr(settings, 'PWA_NAME', 'Molo')
-PWA_DESCRIPTION = getattr(
-    settings, 'PWA_DESCRIPTION', 'Molo Progressive Web App')
+PWA_DESCRIPTION = getattr(settings, 'PWA_DESCRIPTION',
+                          'Molo Progressive Web App')
 PWA_ROOT_URL = getattr(settings, 'PWA_ROOT_URL', '/')
 PWA_THEME_COLOR = getattr(settings, 'PWA_THEME_COLOR', '#000')
 PWA_DISPLAY = getattr(settings, 'PWA_DISPLAY', 'standalone')
