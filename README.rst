@@ -1,21 +1,21 @@
 molo.surveys
 =============================
 
-.. image:: https://img.shields.io/travis/praekelt/molo.surveys.svg
-        :target: https://travis-ci.org/praekelt/molo.surveys
+.. image:: https://img.shields.io/travis/praekelt/molo.pwa.svg
+        :target: https://travis-ci.org/praekelt/molo.pwa
 
-.. image:: https://img.shields.io/pypi/v/molo.surveys.svg
-        :target: https://pypi.python.org/pypi/molo.surveys
+.. image:: https://img.shields.io/pypi/v/molo.pwa.svg
+        :target: https://pypi.python.org/pypi/molo.pwa
 
-.. image:: https://coveralls.io/repos/praekelt/molo.surveys/badge.png?branch=develop
-    :target: https://coveralls.io/r/praekelt/molo.surveys?branch=develop
+.. image:: https://coveralls.io/repos/praekelt/molo.pwa/badge.png?branch=develop
+    :target: https://coveralls.io/r/praekelt/molo.pwa?branch=develop
     :alt: Code Coverage
 
-An implementation of wagtailsurveys as a Molo plugin
+An implementation of pwa as a Molo plugin
 
 Installation::
 
-   pip install molo.surveys
+   pip install molo.pwa
 
 
 Django setup::

@@ -12,3 +12,5 @@ recursive-include molo/surveys *
 
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]
+
+recursive-include molo/pwa/templates *
