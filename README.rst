@@ -14,41 +14,61 @@ molo.surveys
 An implementation of pwa as a Molo plugin
 
 Installation::
+```
+pip install molo.pwa
+```
 
-   pip install molo.pwa
+Django setup:
+```python
+INSTALLED_APPS = [
+    ...
+    'molo.pwa',
+    'fcm_django',
+    ...
+]
+```
+Configure serviceworker path, app name, description, icons, and FCM:
+```python
+PWA_SERVICE_WORKER_PATH = join(
+    PROJECT_ROOT, 'your_app', 'templates', SITE_LAYOUT_BASE, 'serviceworker.js')
+PWA_NAME = 'App Name'
+PWA_DESCRIPTION = "App Description"
+PWA_THEME_COLOR = '#fff'
+PWA_DISPLAY = 'standalone'
+PWA_START_URL = '/'
+PWA_ICONS = [
+    {
+        'src': '/static/img/appicons/app_icon.png',
+        'sizes': '160x160',
+        "type": "image/png"
+    }
+]
+PWA_FCM_API_KEY = 'FCM API KEY'
+PWA_FCM_MSGSENDER_ID = 'FCM MESSAGE SENDER ID'
+FCM_DJANGO_SETTINGS = {
+        "FCM_SERVER_KEY": 'FCM SERVER KEY',
+        "ONE_DEVICE_PER_USER": True,
+        "DELETE_INACTIVE_DEVICES": False,
+}
+```
 
+In your `urls.py`:
+```python
+urlpatterns = [
+    url(r'', include('molo.pwa.urls')), 
+    ...
+    ...
+]
+```
 
-Django setup::
+In your `base.html`:
+```html
+{% load molo_pwa %}
 
-   INSTALLED_APPS = (
-      'wagtailsurveys',
-      'wagtail_personalisation',
-      'wagtailfontawesome',
+<head>
+    ...
+    {% molo_pwa_meta %}
+    ...
+</head>
+```
 
-   )
-
-
-In your urls.py::
-
-    url(
-        r"^(?P<slug>[\w-]+)/success/$",
-        SurveySuccess.as_view(),
-        name="success"
-    ),
-
-
-In your main.html::
-
-   {% load molo_survey_tags %}
-
-   {% block content %}
-      {% surveys_list %}
-   {% endblock %}
-
-In your section page or article page::
-
-   {% load molo_survey_tags %}
-
-   {% block content %}
-    {{% surveys_list_for_pages page=self %}
-   {% endblock %}
