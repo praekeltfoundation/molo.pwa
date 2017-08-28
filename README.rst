@@ -32,7 +32,7 @@ Configure serviceworker path, app name, description, icons, and FCM:
 PWA_SERVICE_WORKER_PATH = join(
     PROJECT_ROOT, 'your_app', 'templates', SITE_LAYOUT_BASE, 'serviceworker.js')
 PWA_NAME = 'App Name'
-PWA_DESCRIPTION = "App Description"
+PWA_DESCRIPTION = 'App Description'
 PWA_THEME_COLOR = '#fff'
 PWA_DISPLAY = 'standalone'
 PWA_START_URL = '/'
