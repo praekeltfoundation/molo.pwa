@@ -34,3 +34,8 @@ def manifest(request):
         for setting_name in dir(app_settings)
         if setting_name.startswith('PWA_')
     })
+
+
+def toast(request):
+    return render(request, 'toast.min.js',
+                  content_type='application/javascript')

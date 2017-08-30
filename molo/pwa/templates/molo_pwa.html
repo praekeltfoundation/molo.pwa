@@ -22,6 +22,7 @@
   <!-- START FIREBASE INITIALIZATION CODE -->
   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase-messaging.js"></script>
+  <script src="/toast.min.js"></script>
   <script type="text/javascript">
     // Initialize Firebase
     var config = {
@@ -104,6 +105,17 @@
         }
 
         requestPermission();
+
+        // In app notification using Toast
+        messaging.onMessage(function(data) {
+          var options = {
+                settings: {
+                  duration: 3000
+                }
+          };
+          iqwerty.toast.Toast(data.notification.title + ' - ' + data.notification.body, options);
+        });
+
       });
   
   </script>
