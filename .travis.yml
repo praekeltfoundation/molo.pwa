@@ -1,0 +1,38 @@
+sudo: false
+language: python
+python:
+  - "2.7"
+cache:
+  directories:
+    - $HOME/.pip-cache/
+
+env:
+  - TZ=UTC
+
+install:
+  - pip install twine
+  - pip install --upgrade pip --cache-dir $HOME/.pip-cache/
+  - pip install coveralls coverage --cache-dir $HOME/.pip-cache/
+  - pip install flake8 --cache-dir $HOME/.pip-cache/
+  - pip install -r requirements-dev.txt --cache-dir $HOME/.pip-cache/
+  - pip install -e . --cache-dir $HOME/.pip-cache/
+script:
+  - flake8 molo
+  - molo scaffold testapp --require molo.pwa --include molo.pwa ^pwa/
+  - flake8 testapp
+  - cp test_settings.py testapp/testapp/settings/local.py
+  - pip install -e testapp
+  - py.test --cov=molo.pwa --cov-report=term
+
+after_success:
+  - coveralls
+
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: praekelt.org
+  password:
+    secure: RiysryXsxh41tamHCB5BqJidEAYCoxxZnaJNAsV9XtYrq6q90iWnmFKz2pwW6S5RcdNYeVceKTh/kp8RhrYgp9HpDAze9PTTEIBgeVbothJcHTCvV+4eXgVO529WxJksKfC+4JheZQLQczIdIVDYxuztiRq2wPQKKEYyeK7ymwMl80gB5pUiDsUFpsGZhTM9GSlWxCcoXUQIX3biP/95f/KEwEkwqWFTeXDqNlFoCdHrPntHlf4cR3YyzedW2SkhSKcEYylAISoTmze3rmTQBA11JzurlH+cK9ZCu7cuA2OdFe59MtensgO4M2btanPGiS2FrCcvRc33B5rzidSiCHMha77Npf9D1qjs1rKZZjSLU/vjv3Q3usYmplSOohuy7WHGJDfFf4KcTdm+heIbZKRIoH9knICtShJ4BIV8tgbFUG6vKuIn+yy4Ao4SzlQrb22z6Ndk/0+2hSp+EfaI9UJx6tYbLzfmFpGcN7LiWu7/C9cq+pFdIz3aXWhKpEzvuhF/RO4inXL9UP5MQJgOc8QF9necBQfHv4Ec6HdD5BtZLF+lsvLOfVbUXwQGTxJQwDvcpDdjhjNfsV47BL3EnEhYVw9ubPW+gmIMKKaLdq5ZQyafgPbQ+BAtEpZeAXFbW77uWQY5Lzbm3FBwDMjwwD8CutBTUUwiGb+n8qIdSEA=
+  on:
+    tags: true
+    all_branches: true
