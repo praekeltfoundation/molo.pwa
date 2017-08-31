@@ -36,6 +36,11 @@ def manifest(request):
     })
 
 
+def fcm(request):
+    return render(request, 'fcm.js',
+                  content_type='application/javascript')
+
+
 def toast(request):
     return render(request, 'toast.min.js',
                   content_type='application/javascript')
