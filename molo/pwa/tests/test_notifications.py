@@ -32,7 +32,7 @@ class NotificationsTestCase(TestCase, MoloTestCaseMixin):
             json.dumps({"registration_id": "1234"},),
             content_type="application/json")
         self.assertEquals(response.status_code, 200)
-        self.assertEquals(response.content, 'Token Updated')
+        self.assertContains(response, 'Token Updated')
         self.assertEquals(FCMDevice.objects.all().count(), 1)
         self.user.profile.refresh_from_db()
         self.assertEquals(self.user.profile.fcm_registration_token, '1234')
