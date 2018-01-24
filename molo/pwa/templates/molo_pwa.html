@@ -9,8 +9,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="{{ pwa_settings.PWA_NAME }}">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-{% compress js %}
 {% if request.user.is_authenticated %}
 <script type="text/javascript">
   var fcmConfig = {
@@ -19,6 +17,8 @@
   };
 </script>
 {% endif %}
+
+{% compress js inline %}
 <script type="text/javascript">
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
@@ -33,7 +33,6 @@
             }).catch(function (err) {
                 console.log('ServiceWorker registration failed: ', err);
             });
-
             navigator.serviceWorker.ready.then(function(registration) {
                console.log('Service Worker Ready');
             });
