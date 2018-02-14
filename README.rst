@@ -14,61 +14,59 @@ molo.surveys
 An implementation of pwa as a Molo plugin
 
 Installation::
-```
-pip install molo.pwa
-```
 
-Django setup:
-```python
-INSTALLED_APPS = [
-    ...
-    'molo.pwa',
-    'fcm_django',
-    ...
-]
-```
-Configure serviceworker path, app name, description, icons, and FCM:
-```python
-PWA_SERVICE_WORKER_PATH = join(
-    PROJECT_ROOT, 'your_app', 'templates', SITE_LAYOUT_BASE, 'serviceworker.js')
-PWA_NAME = 'App Name'
-PWA_DESCRIPTION = 'App Description'
-PWA_THEME_COLOR = '#fff'
-PWA_DISPLAY = 'standalone'
-PWA_START_URL = '/'
-PWA_ICONS = [
-    {
-        'src': '/static/img/appicons/app_icon.png',
-        'sizes': '160x160',
-        "type": "image/png"
-    }
-]
-PWA_FCM_API_KEY = 'FCM API KEY'
-PWA_FCM_MSGSENDER_ID = 'FCM MESSAGE SENDER ID'
-FCM_DJANGO_SETTINGS = {
-        "FCM_SERVER_KEY": 'FCM SERVER KEY',
-        "ONE_DEVICE_PER_USER": True,
-        "DELETE_INACTIVE_DEVICES": False,
-}
-```
+  pip install molo.pwa
 
-In your `urls.py`:
-```python
-urlpatterns = [
-    url(r'', include('molo.pwa.urls')), 
-    ...
-    ...
-]
-```
 
-In your `base.html`:
-```html
-{% load molo_pwa %}
+Django setup::
 
-<head>
-    ...
-    {% molo_pwa_meta %}
-    ...
-</head>
-```
+  INSTALLED_APPS = [
+      ...
+      'molo.pwa',
+      'fcm_django',
+      ...
+  ]
+
+Configure serviceworker path, app name, description, icons, and FCM::
+
+  PWA_SERVICE_WORKER_PATH = join(
+      PROJECT_ROOT, 'your_app', 'templates', SITE_LAYOUT_BASE, 'serviceworker.js')
+  PWA_NAME = 'App Name'
+  PWA_DESCRIPTION = 'App Description'
+  PWA_THEME_COLOR = '#fff'
+  PWA_DISPLAY = 'standalone'
+  PWA_START_URL = '/'
+  PWA_ICONS = [
+      {
+          'src': '/static/img/appicons/app_icon.png',
+          'sizes': '160x160',
+          "type": "image/png"
+      }
+  ]
+  PWA_FCM_API_KEY = 'FCM API KEY'
+  PWA_FCM_MSGSENDER_ID = 'FCM MESSAGE SENDER ID'
+  FCM_DJANGO_SETTINGS = {
+          "FCM_SERVER_KEY": 'FCM SERVER KEY',
+          "ONE_DEVICE_PER_USER": True,
+          "DELETE_INACTIVE_DEVICES": False,
+  }
+
+
+In your urls.py::
+
+  urlpatterns = [
+      url(r'', include('molo.pwa.urls')), 
+      ...
+      ...
+  ]
+
+In your base.html::
+
+  {% load molo_pwa %}
+
+  <head>
+      ...
+      {% molo_pwa_meta %}
+      ...
+  </head>
 
