@@ -7,7 +7,7 @@
 {% for icon in pwa_settings.PWA_ICONS %}
 <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.sizes }}">
 {% endfor %}
-{% if request.user.is_authenticated %}
+{% if user_is_authenticated %}
 <script type="text/javascript">
   var fcmConfig = {
     apiKey: "{{ pwa_settings.PWA_FCM_API_KEY }}",
@@ -21,7 +21,7 @@
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
             navigator.serviceWorker.register('/serviceworker.js').then(function (registration) {
-              {% if request.user.is_authenticated %}
+              {% if user_is_authenticated %}
                 js = document.createElement('script');
                 js.src = '/fcm.js';
                 js.async = true;
