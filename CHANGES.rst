@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+6.1.1
+-----
+- Compress and inline page js scripts
+
 6.1.0
 -----
 - add support for Django 1.11
