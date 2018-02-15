@@ -3,9 +3,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="{{ pwa_settings.PWA_NAME }}">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-{% compress js %}
 <link rel="manifest" href="/manifest.json">
-{% endcompress %}
 {% for icon in pwa_settings.PWA_ICONS %}
 <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.sizes }}">
 {% endfor %}
