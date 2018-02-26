@@ -15,8 +15,6 @@
   };
 </script>
 {% endif %}
-
-{% compress js inline %}
 <script type="text/javascript">
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
@@ -34,4 +32,3 @@
         });
     }
 </script>
-{% endcompress %}
