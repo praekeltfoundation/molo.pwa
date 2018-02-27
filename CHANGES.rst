@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+6.1.2
+-----
+- Remove Compress and inline page js scripts - Sentry error thrown
+
 6.1.1
 -----
 - Compress and inline page js scripts
