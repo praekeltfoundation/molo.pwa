@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+6.2.0
+-----
+- Fix request not dictionary - use proper request in context
+
 6.1.2
 -----
 - Remove Compress and inline page js scripts - Sentry error thrown

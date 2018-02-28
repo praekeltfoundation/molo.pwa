@@ -21,6 +21,6 @@ def molo_pwa_meta(context):
                     for setting_name in dir(app_settings)
                     if setting_name.startswith('PWA_')}
     return {
-        'user_is_authenticated': context['request']['user'].is_authenticated,
+        'user_is_authenticated': context['request'].user.is_authenticated,
         'pwa_settings': pwa_settings
     }
