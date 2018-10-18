@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+7.0.0
+-----
+- Add support for Molo 7
+
 6.2.0
 -----
 - Fix request not dictionary - use proper request in context
