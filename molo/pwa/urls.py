@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import re_path
 
 from fcm_django.api.rest_framework import FCMDeviceViewSet
 from rest_framework.routers import DefaultRouter
@@ -12,11 +12,11 @@ router = DefaultRouter()
 router.register(r'devices', FCMDeviceViewSet)
 
 urlpatterns += [
-    url(
+    re_path(
         r'^notification_devices/$', RegistrationTokenView.as_view(),
         name='registration-token'),
-    url('^serviceworker.js$', service_worker),
-    url('^manifest.json$', manifest),
-    url('^fcm.js$', fcm),
-    url('^toast.min.js$', toast),
+    re_path('^serviceworker.js$', service_worker),
+    re_path('^manifest.json$', manifest),
+    re_path('^fcm.js$', fcm),
+    re_path('^toast.min.js$', toast),
 ]
