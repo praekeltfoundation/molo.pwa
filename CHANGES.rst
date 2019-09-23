@@ -1,5 +1,10 @@
 CHANGE LOG
 ==========
+
+10.0.0
+------
+- Add support for Molo 10 and Django 2.2
+
 8.0.0
 -----
 - Add support for Molo 8 and drop Python 2 support
