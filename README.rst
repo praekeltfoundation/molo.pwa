@@ -1,4 +1,4 @@
-molo.surveys
+molo.pwa
 =============================
 
 .. image:: https://img.shields.io/travis/praekelt/molo.pwa.svg
