@@ -1,7 +1,7 @@
 CHANGE LOG
 ==========
 
-10.1.0
+10.1.1
 ------
 - Add support for Molo 10 and Django 2.2
 
