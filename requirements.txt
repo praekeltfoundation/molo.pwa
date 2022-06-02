@@ -2,6 +2,6 @@ molo.core>=10.0.0,<11.0.0
 celery<4.0
 django-celery
 psycopg2
-html5lib==0.9999999
+html5lib==0.99999999
 fcm-django
 Unidecode==0.04.16
