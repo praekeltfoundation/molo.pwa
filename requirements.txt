@@ -5,3 +5,4 @@ psycopg2
 html5lib==0.9999999
 fcm-django
 Unidecode==0.04.16
+pillow>=9.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
